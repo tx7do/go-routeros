@@ -4,7 +4,7 @@ import (
 	"io"
 	"testing"
 
-	"go-routeros/proto"
+	"github.com/tx7do/go-routeros/proto"
 )
 
 func TestLogin(t *testing.T) {
