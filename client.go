@@ -13,7 +13,7 @@ import (
 	"net"
 	"sync"
 
-	"github.com/tx7do/go-routeros/proto"
+	"go-routeros/proto"
 )
 
 // Client is a RouterOS API client.

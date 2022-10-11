@@ -3,12 +3,12 @@ package routeros
 import (
 	"errors"
 
-	"github.com/tx7do/go-routeros/proto"
+	"go-routeros/proto"
 )
 
 var (
-	errAlreadyAsync   = errors.New("Async() has already been called")
-	errAsyncLoopEnded = errors.New("Async() loop has ended - probably read error")
+	errAlreadyAsync   = errors.New("async has already been called")
+	errAsyncLoopEnded = errors.New("async loop has ended - probably read error")
 )
 
 // UnknownReplyError records the sentence whose Word is unknown.

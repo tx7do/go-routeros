@@ -1,10 +1,10 @@
-package routeros_test
+package routeros
 
 import (
 	"io"
 	"testing"
 
-	"github.com/tx7do/go-routeros/proto"
+	"go-routeros/proto"
 )
 
 func TestLogin(t *testing.T) {
@@ -176,7 +176,7 @@ func TestRunWithListen(t *testing.T) {
 	}
 }
 
-func TestRunAsync(t *testing.T) {
+func TestProtoRunAsync(t *testing.T) {
 	c, s := newPair(t)
 	defer c.Close()
 	c.Async()
@@ -400,11 +400,11 @@ func (c *conn) Close() error {
 	return nil
 }
 
-func newPair(t *testing.T) (*routeros.Client, *fakeServer) {
+func newPair(t *testing.T) (*Client, *fakeServer) {
 	ar, aw := io.Pipe()
 	br, bw := io.Pipe()
 
-	c, err := routeros.NewClient(&conn{ar, bw})
+	c, err := NewClient(&conn{ar, bw})
 	if err != nil {
 		t.Fatal(err)
 	}

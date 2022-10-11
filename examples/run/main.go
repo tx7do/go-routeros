@@ -4,6 +4,8 @@ import (
 	"flag"
 	"log"
 	"strings"
+
+	routeros "go-routeros"
 )
 
 var (

@@ -6,6 +6,8 @@ import (
 	"log"
 	"strings"
 	"time"
+
+	routeros "go-routeros"
 )
 
 var (

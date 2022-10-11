@@ -2,10 +2,11 @@ package main
 
 import (
 	"flag"
-	routeros "go-routeros"
 	"log"
 	"strings"
 	"time"
+
+	routeros "go-routeros"
 )
 
 var (
