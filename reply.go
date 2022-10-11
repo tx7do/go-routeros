@@ -16,9 +16,9 @@ type Reply struct {
 func (r *Reply) String() string {
 	b := &bytes.Buffer{}
 	for _, re := range r.Re {
-		fmt.Fprintf(b, "%s\n", re)
+		_, _ = fmt.Fprintf(b, "%s\n", re)
 	}
-	fmt.Fprintf(b, "%s", r.Done)
+	_, _ = fmt.Fprintf(b, "%s", r.Done)
 	return b.String()
 }
 

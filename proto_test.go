@@ -85,7 +85,7 @@ func TestLoginInvalidChallenge(t *testing.T) {
 func TestLoginEOF(t *testing.T) {
 	c, s := newPair(t)
 	defer c.Close()
-	s.Close()
+	_ = s.Close()
 
 	err := c.Login("userTest", "passTest")
 	if err == nil {
@@ -339,7 +339,7 @@ func TestRunFatal(t *testing.T) {
 func TestRunAfterClose(t *testing.T) {
 	c, s := newPair(t)
 	c.Close()
-	s.Close()
+	_ = s.Close()
 
 	_, err := c.Run("/ip/address")
 	if err == nil {
@@ -371,7 +371,7 @@ func TestListen(t *testing.T) {
 	}
 	reC := listen.Chan()
 
-	listen.Cancel()
+	_, _ = listen.Cancel()
 
 	sen := <-reC
 	want := "!re @l1 [{`address` `1.2.3.4/32`}]"
@@ -395,8 +395,8 @@ type conn struct {
 }
 
 func (c *conn) Close() error {
-	c.PipeReader.Close()
-	c.PipeWriter.Close()
+	_ = c.PipeReader.Close()
+	_ = c.PipeWriter.Close()
 	return nil
 }
 

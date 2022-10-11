@@ -60,7 +60,7 @@ func DialTLS(address, username, password string, tlsConfig *tls.Config) (*Client
 func newClientAndLogin(rwc io.ReadWriteCloser, username, password string) (*Client, error) {
 	c, err := NewClient(rwc)
 	if err != nil {
-		rwc.Close()
+		_ = rwc.Close()
 		return nil, err
 	}
 	err = c.Login(username, password)
@@ -80,7 +80,7 @@ func (c *Client) Close() {
 	}
 	c.closing = true
 	c.mu.Unlock()
-	c.rwc.Close()
+	_ = c.rwc.Close()
 }
 
 // Login runs the /login command. Dial and DialTLS call this automatically.
@@ -115,7 +115,7 @@ func (c *Client) Login(username, password string) error {
 func (c *Client) challengeResponse(cha []byte, password string) string {
 	h := md5.New()
 	h.Write([]byte{0})
-	io.WriteString(h, password)
+	_, _ = io.WriteString(h, password)
 	h.Write(cha)
 	return fmt.Sprintf("00%x", h.Sum(nil))
 }
